@@ -25,6 +25,7 @@ all_uuid = list(train_uuid) + list(val_uuid) + list(gender_test_uuid)
 
 
 def preprocess_label(label="covid"):
+    print('stared processing labels')
     df = pd.read_csv(data_dir + 'metadata_compiled.csv', index_col="uuid")
     df = df.replace(np.nan, '', regex=True)
     # df = df[df["gender"].str.contains("male")]
@@ -66,6 +67,7 @@ def preprocess_label(label="covid"):
     np.save(feature_dir + "label_{}.npy".format(label), label_list)
     np.save(feature_dir + "sound_dir_loc_{}.npy".format(label), filename_list)
     np.save(feature_dir + "split_{}.npy".format(label), split)
+    print('finished processing labels')
 
 
 def extract_and_save_embeddings_baselines(label, feature="opensmile"):
@@ -96,12 +98,13 @@ def extract_and_save_embeddings_baselines(label, feature="opensmile"):
 
 def extract_and_save_embeddings(feature="operaCE", label="covid", input_sec=2, dim=1280):
     from src.benchmark.model_util import extract_opera_feature
+    print('started extract embeddings')
     sound_dir_loc = np.load(feature_dir + "sound_dir_loc_{}.npy".format(label))
     opera_features = extract_opera_feature(
         sound_dir_loc,  pretrain=feature, input_sec=input_sec, dim=dim)
     feature += str(dim)
-    np.save(feature_dir + feature + "_feature_{}.npy".format(label),
-            np.array(opera_features))
+    np.save(feature_dir + feature + "_feature_{}.npy".format(label), np.array(opera_features))
+    print('finished extract embeddings')
 
 
 if __name__ == '__main__':

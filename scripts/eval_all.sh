@@ -20,7 +20,7 @@ python src/benchmark/linear_eval.py --task coviduk --pretrain $pretrain_model --
 
 # task 2
 echo extracting feature from $pretrain_model for downstream Task2;
-python -u src/benchmark/processing/coviduk_processing.p --pretrain $pretrain_model --modality cough --dim $dim
+python -u src/benchmark/processing/coviduk_processing.py --pretrain $pretrain_model --modality cough --dim $dim
 
 echo linear evaluation of $pretrain_model on downstream Task2;
 python src/benchmark/linear_eval.py --task coviduk --pretrain $pretrain_model --modality cough --dim $dim

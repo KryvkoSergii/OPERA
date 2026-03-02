@@ -45,11 +45,13 @@ def extract_opera_feature(sound_dir_loc, pretrain="operaCE", input_sec=8, from_s
     from tqdm import tqdm
 
     print("extracting feature from {} model with input_sec {}".format(pretrain, input_sec))
+    device = "gpu" if torch.cuda.is_available() else "cpu"
+    print("uses device {}".format(device))
 
     MAE = ("mae" in pretrain or "GT" in pretrain)
 
     encoder_path = get_encoder_path(pretrain)
-    ckpt = torch.load(encoder_path)
+    ckpt = torch.load(encoder_path, map_location=torch.device(device))
     model = initialize_pretrained_model(pretrain)
     model.eval()
     model.load_state_dict(ckpt["state_dict"], strict=False)
@@ -96,7 +98,8 @@ def extract_opera_feature(sound_dir_loc, pretrain="operaCE", input_sec=8, from_s
             opera_features.append(features.tolist()[0])
 
     x_data = np.array(opera_features)
-    if MAE: x_data = x_data.squeeze(1) 
+    if MAE: x_data = x_data.squeeze(1)
+    print('finished extracting features')
     print(x_data.shape)
     return x_data
 

@@ -205,7 +205,7 @@ def linear_evaluation_icbhidisease(use_feature="opensmile", l2_strength=1e-4, ep
 
     trainer = pl.Trainer(
         max_epochs=epochs,
-        accelerator="gpu",
+        accelerator="cpu",
         devices=1,
         # logger=logger,
         logger=False,
@@ -278,7 +278,7 @@ def linear_evaluation_kauh(use_feature="opensmile", l2_strength=1e-6, epochs=64,
 
     trainer = pl.Trainer(
         max_epochs=epochs,
-        accelerator="gpu",
+        accelerator="cpu",
         devices=1,
         # logger=logger,
         logger=False,
@@ -358,7 +358,7 @@ def linear_evaluation_coswara(use_feature="operaCE1280", l2_strength=1e-6, epoch
 
     trainer = pl.Trainer(
         max_epochs=epochs,
-        accelerator="gpu",
+        accelerator="cpu",
         devices=1,
         # logger=logger,
         logger=False,
@@ -428,7 +428,7 @@ def linear_evaluation_copd(n_cls=5, use_feature="opensmile", l2_strength=1e-5, e
 
     trainer = pl.Trainer(
         max_epochs=epochs,
-        accelerator="gpu",
+        accelerator="cpu",
         devices=1,
         # logger=logger,
         logger=False,
@@ -500,7 +500,7 @@ def linear_evaluation_coughvid(use_feature="operaCE1280", l2_strength=1e-6, epoc
 
     trainer = pl.Trainer(
         max_epochs=epochs,
-        accelerator="gpu",
+        accelerator="cpu",
         devices=1,
         # logger=logger,
         logger=False,
@@ -572,7 +572,7 @@ def linear_evaluation_coviduk(use_feature="operaCE1280", l2_strength=1e-6, epoch
 
     trainer = pl.Trainer(
         max_epochs=epochs,
-        accelerator="gpu",
+        accelerator="cpu",
         devices=1,
         # logger=logger,
         logger=False,
@@ -651,7 +651,7 @@ def linear_evaluation_ssbpr(n_cls=5, use_feature="opensmile", l2_strength=1e-5, 
 
     trainer = pl.Trainer(
         max_epochs=epochs,
-        accelerator="gpu",
+        accelerator="cpu",
         devices=1,
         # logger=logger,
         logger=False,
@@ -753,7 +753,7 @@ def linear_evaluation_mmlung(use_feature="opensmile", method='LOOCV', l2_strengt
 
         trainer = pl.Trainer(
             max_epochs=epochs,
-            accelerator="gpu",
+            accelerator="cpu",
             devices=1,
             # logger=logger,
             logger=False,
@@ -842,7 +842,7 @@ def linear_evaluation_nosemic(use_feature="opensmile", method='LOOCV', l2_streng
 
         trainer = pl.Trainer(
             max_epochs=epochs,
-            accelerator="gpu",
+            accelerator="cpu",
             devices=1,
             # logger=logger,
             logger=False,
